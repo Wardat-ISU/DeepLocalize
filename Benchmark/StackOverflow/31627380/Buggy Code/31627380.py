@@ -70,7 +70,7 @@ callbacks= [
 #keras.callbacks.TerminateOnNaN()
 #keras.callbacks.EarlyStopping(monitor='loss', patience=1)
 #keras.callbacks.EarlyStopping(monitor='accuracy', patience=1)
-keras.callbacks.backpropagation(train, Y, len(model.layers),batch_size=batch_size, startTime = start_time)
+keras.callbacks.DeepLocalize(train, Y, len(model.layers),batch_size=batch_size, startTime = start_time)
 ]
          )
 end_time = time.clock()
