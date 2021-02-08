@@ -1,0 +1,13 @@
+Car Damage Dataset
+
+Contact: Ting Neo (neo.kaiting@gmail.com)
+
+This data was scraped from Google Images with Selenium using several car damage related keywords, and hand-labeled for classification. Images of whole cars have been augmented with a random selection of images from the Stanford Car Dataset (http://ai.stanford.edu/~jkrause/cars/car_dataset.html, 3D Object Representation for Fine-Grained Categorization by Jonathan Krause, Mmichael Stark, Jia Deng, Li Fei-Fei).
+
+The data is separated into training and validation folders; within these, the labels are indicated by the folder names as follows:
+
+data1a: 00-damage, 01-whole
+data2a: 00-front, 01-rear, 02-side 
+data3a: 00-minor, 01-moderate, 02-severe
+
+The car damage dataset is made available under the Open Data Commons Attribution License: https://opendatacommons.org/licenses/by/1.0/. 
