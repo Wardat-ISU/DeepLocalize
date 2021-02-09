@@ -1,2 +1,2 @@
 # DeepLocalize
-DeepLocalize: Fault Localization for Deep NeuralNetworks
+DeepLocalize: Fault Localization for Deep Neural Networks
