@@ -2,14 +2,13 @@
 DeepLocalize: Fault Localization for Deep Neural Networks
 
 
-**cite** If you find this code useful in your research, please consider citing:
 
-@inproceedings{wardat20DeepLocalize,
-  author = {Mohammad Wardat and Wei Le and Hridesh Rajan},
-  title = {DeepLocalize: Fault Localization for Deep Neural Networks},
-  booktitle = {ICSE'21: The 43nd International Conference on Software Engineering},
-  location = {Madrid, Spain},
-  month = {May 25-May 28, 2021},
-  year = {2021},
-  entrysubtype = {conference}
-}
+**cite** If you find this [paper](https://conf.researchr.org/details/icse-2021/icse-2021-papers/1/DeepLocalize-Fault-Localization-for-Deep-Neural-Networks) useful in your research, please consider citing:
+
+    @inproceedings{wardat20DeepLocalize,
+	Author = {Mohammad Wardat and Wei Le and Hridesh Rajan},
+	Title = {DeepLocalize: Fault Localization for Deep Neural Networks},
+	Booktitle  = {ICSE'21: The 43nd International Conference on Software Engineering},
+	Year = {2021},
+	entrysubtype = {conference}
+    }
