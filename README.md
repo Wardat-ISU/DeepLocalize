@@ -3,7 +3,7 @@
 
 ## Our Tool
 
-The simplest way to build training model is to start with the [`Sequential`] model, our tool follows the [Keras functional API](https://keras.io/getting-started/functional-api-guide), with some changes explained in the paper:
+The simplest way to build a training model is to start with the [`Sequential`] model, our tool follows the [Keras functional API](https://keras.io/getting-started/functional-api-guide), with some changes explained in the paper:
 
 Here is the `Sequential` model:
 
@@ -15,7 +15,7 @@ add all layers as easy as by using `.add()` function.
 
 Dense layer takes three arguments: num_inputs(number of input unit), num_outputs(number of output unit), lr_rate(leaning rate), and name(name of layer).
 
-The activation function is added as new layer. 
+The activation function is added as a new layer. 
 ```python
 lr = 0.01 
 model.add(Dense(num_inputs=100, num_outputs=64, lr_rate=lr, name='FC1'))
@@ -40,6 +40,7 @@ in the `.fit()` function to observe the model variables, and make the user to be
 model.fit(x_train, y_train, epochs=5, batch_size=32)
 ```
 
+## Our Callback
 
 ## BibTeX Reference
 If you find this [paper](https://conf.researchr.org/details/icse-2021/icse-2021-papers/1/DeepLocalize-Fault-Localization-for-Deep-Neural-Networks) useful in your research, please consider citing:
