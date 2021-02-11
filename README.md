@@ -1,7 +1,6 @@
 # DeepLocalize: Fault Localization for Deep Neural Networks
 
 
-
 ## Our Tool
 
 The simplest way to build training model is to start with the [`Sequential`] model, our tool follows the [Keras functional API](https://keras.io/getting-started/functional-api-guide), with some changes explained in the paper:
@@ -34,16 +33,15 @@ model.compile(loss='categorical_crossentropy',
               metrics=['accuracy'])
 ```
 
-If you need to, you can further configure your optimizer. A core principle of Keras is to make things reasonably simple, while allowing the user to be fully in control when they need to 
-
-You can now start training your model using training dataset:
+The core principle of our tool is to make the training model simple, while inserting instrumentation
+in the `.fit()` function to observe the model variables, and make the user to be fully in control when they need the variables. 
 
 ```python
 model.fit(x_train, y_train, epochs=5, batch_size=32)
 ```
 
 
-
+## BibTeX Reference
 If you find this [paper](https://conf.researchr.org/details/icse-2021/icse-2021-papers/1/DeepLocalize-Fault-Localization-for-Deep-Neural-Networks) useful in your research, please consider citing:
 
     @inproceedings{wardat21@DeepLocalize,
