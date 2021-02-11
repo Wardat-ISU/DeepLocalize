@@ -2,6 +2,48 @@
 
 
 
+## Our Tool
+
+The simplest way to build training model is to start with the [`Sequential`] model, our tool follows the [Keras functional API](https://keras.io/getting-started/functional-api-guide), with some changes explained in the paper:
+
+Here is the `Sequential` model:
+
+```python
+model = Sequential()
+```
+
+add all layers as easy as by using `.add()` function.
+
+Dense layer takes three arguments: num_inputs(number of input unit), num_outputs(number of output unit), lr_rate(leaning rate), and name(name of layer).
+
+The activation function is added as new layer. 
+```python
+lr = 0.01 
+model.add(Dense(num_inputs=100, num_outputs=64, lr_rate=lr, name='FC1'))
+model.add(ReLu())
+model.add(Dense(num_inputs=64, num_outputs=10, lr_rate=lr, name='FC2'))
+model.add(softmax())
+```
+
+
+Once you finished building your model, you can use `.compile()` to start the learning process after determing the loss function, optimizer and the metrics:
+
+```python
+model.compile(loss='categorical_crossentropy',
+              optimizer='sgd',
+              metrics=['accuracy'])
+```
+
+If you need to, you can further configure your optimizer. A core principle of Keras is to make things reasonably simple, while allowing the user to be fully in control when they need to 
+
+You can now start training your model using training dataset:
+
+```python
+model.fit(x_train, y_train, epochs=5, batch_size=32)
+```
+
+
+
 If you find this [paper](https://conf.researchr.org/details/icse-2021/icse-2021-papers/1/DeepLocalize-Fault-Localization-for-Deep-Neural-Networks) useful in your research, please consider citing:
 
     @inproceedings{wardat21@DeepLocalize,
