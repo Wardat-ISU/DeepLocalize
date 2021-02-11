@@ -11,7 +11,7 @@ Here is the `Sequential` model:
 model = Sequential()
 ```
 
-add all layers as easy as by using `.add()` function.
+Add all layers as easy as by using `.add()` function.
 
 Dense layer takes three arguments: num_inputs(number of input unit), num_outputs(number of output unit), lr_rate(leaning rate), and name(name of layer).
 
@@ -34,7 +34,7 @@ model.compile(loss='categorical_crossentropy',
 ```
 
 The core principle of our tool is to make the training model simple, while inserting instrumentation
-in the `.fit()` function to observe the model variables, and make the user to be fully in control when they need the variables. 
+in the `.fit()` function to observe the model variables, then make the user to be fully in control when they need the variables. 
 
 ```python
 model.fit(x_train, y_train, epochs=5, batch_size=32)
@@ -42,7 +42,15 @@ model.fit(x_train, y_train, epochs=5, batch_size=32)
 
 You can start training a new model using any environment for scientific programming in the Python language (Windows) or commands in Terminal (macOS/Linux) as following:
 
-    python train.py
+    python main.py
+
+
+## Our Callbacks API
+You can pass our callback `DeepLocalize()` to the `.fit()` method of a model:
+
+
+
+
 
 ## Prerequisites
 
@@ -55,9 +63,6 @@ Version numbers below are of confirmed working releases for this project.
     scikit-learn 0.19.1
     scipy 1.1.0
     tensorflow 1.10.1
-
-
-## Our Callback
 
 ## BibTeX Reference
 If you find this [paper](https://conf.researchr.org/details/icse-2021/icse-2021-papers/1/DeepLocalize-Fault-Localization-for-Deep-Neural-Networks) useful in your research, please consider citing:
