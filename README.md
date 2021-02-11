@@ -11,7 +11,7 @@ Here is the `Sequential` model:
 model = Sequential()
 ```
 
-Add all layers as easy as by using `.add()` function.
+Add all layers as easily as by using `.add()` function.
 
 Dense layer takes three arguments: num_inputs(number of input unit), num_outputs(number of output unit), lr_rate(leaning rate), and name(name of layer).
 
@@ -34,14 +34,13 @@ model.compile(loss='categorical_crossentropy',
 ```
 
 The core principle of our tool is to make the training model simple, while inserting instrumentation
-in the `.fit()` function to observe the model variables, then make the user to be fully in control when they need the variables. 
+in the `.fit()` function to observe the model variables, then make the user to be fully in control when they need the variables.
 
 ```python
 model.fit(x_train, y_train, epochs=5, batch_size=32)
 ```
 
-You can start training a new model using any environment for scientific programming in the Python language (Windows) or commands in Terminal (macOS/Linux) as following:
-
+You can start training a new model using the following commands in Terminal (macOS/Linux) or cmd (Windows) as following:
     python main.py
 
 
