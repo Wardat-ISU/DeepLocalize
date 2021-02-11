@@ -46,7 +46,11 @@ You can start training a new model using any environment for scientific programm
 
 
 ## Our Callbacks API
-You can pass our callback `DeepLocalize()` to the `.fit()` method of a model as following:
+To use our callback, you need to add our callback as subclass in your keras.callbacks.py file.
+
+The core principle of our callback to get a view on internal states and statistics of the model during training.
+
+Then you can pass our callback `DeepLocalize()` to the `.fit()` method of a model as following:
 
 ```python
 callback = keras.callbacks.DeepLocalize(inputs, outputs, layer_number, batch_size, startTime)
