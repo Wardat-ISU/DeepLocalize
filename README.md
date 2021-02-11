@@ -40,6 +40,10 @@ in the `.fit()` function to observe the model variables, and make the user to be
 model.fit(x_train, y_train, epochs=5, batch_size=32)
 ```
 
+You can start training a new model using any environment for scientific programming in the Python language (Windows) or commands in Terminal (macOS/Linux) as following:
+
+    python train.py
+
 ## Prerequisites
 
 Version numbers below are of confirmed working releases for this project.
