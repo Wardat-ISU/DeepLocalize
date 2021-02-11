@@ -41,6 +41,7 @@ model.fit(x_train, y_train, epochs=5, batch_size=32)
 ```
 
 You can start training a new model using the following commands in Terminal (macOS/Linux) or cmd (Windows) as following:
+
     python main.py
 
 
