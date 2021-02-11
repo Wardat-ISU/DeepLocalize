@@ -1,0 +1,220 @@
+- Finding papers / models for houes prediction using NN
+- Trying to build a model using keras.
+- Perhaps it is better to start without selu and then add selu after we have predictions working
+
+Added more features, learning stopped.. Need to investigate
+
+Bibliograhpy/references:
+- Neural Network Based Model for Predicting Housing Market
+Performance
+Ahmed Khalafallah**
+Department of Civil, Environmental, and Construction Engineering,
+University of Central Florida, Orlando, FL 32816-2450, USA
+
+- https://nataliarslan.com/otherprojects/2017/9/26/predicting-house-prices-in-stockholm-using-tensorflow
+
+- A Neural Network based model for real estate price estimation
+considering environmental quality of property location
+
+House price prediction using neural networks
+
+Adam , 6000 iteracji
+
+Next Step:
+ improve, Selu, other optimizers
+
+# 10 epochs
+melbourne_model = keras.models.Sequential()
+melbourne_model.add(keras.layers.Dense(20, activation='tanh',input_dim=len(input_features)))
+melbourne_model.add(keras.layers.Dense(20, activation='tanh'))
+melbourne_model.add(keras.layers.Dense(1, activation='relu'))   # MAE: 922165
+
+# 20 epochs
+melbourne_model = keras.models.Sequential()
+melbourne_model.add(keras.layers.Dense(20, activation='tanh',input_dim=len(input_features)))
+melbourne_model.add(keras.layers.Dense(20, activation='tanh'))
+melbourne_model.add(keras.layers.Dense(1, activation='relu'))   # MAE: 462209
+
+
+# 30 epochs
+melbourne_model = keras.models.Sequential()
+melbourne_model.add(keras.layers.Dense(20, activation='tanh',input_dim=len(input_features)))
+melbourne_model.add(keras.layers.Dense(20, activation='tanh'))
+melbourne_model.add(keras.layers.Dense(1, activation='relu'))   # 'MAE:', 529127.20319561008
+
+# 1000 epochs
+melbourne_model = keras.models.Sequential()
+melbourne_model.add(keras.layers.Dense(20, activation='tanh',input_dim=len(input_features)))
+melbourne_model.add(keras.layers.Dense(20, activation='tanh'))
+melbourne_model.add(keras.layers.Dense(1, activation='relu'))   # 'MAE:', 460326
+
+# 100 epochs (Adam)
+
+melbourne_model = keras.models.Sequential()
+melbourne_model.add(keras.layers.Dense(20, activation='tanh',input_dim=len(input_features)))
+melbourne_model.add(keras.layers.Dense(20, activation='tanh'))
+melbourne_model.add(keras.layers.Dense(1, activation='relu'))   # 'MAE:', 1060400
+===========================================
+- reproducing : House price prediction : hedonic price model vs artificial neural network
+
+
+
+
+==========================================================================================
+ Relu
+20 input neurons , 20 hidden , 1 final. All Relu activations 
+
+    input_features = ['Address','Bathroom','Bedroom2','BuildingArea','Car','CouncilArea', 'Date', 'Distance', 'Landsize', 'Lattitude', 'Longtitude', 'Method', 'Postcode', 'Price', 'Propertycount', 'Regionname', 'Rooms', 'SellerG', 'Suburb', 'Type', 'YearBuilt']
+
+Train : Val 80:20
+
+Infer on best weights
+('MAE:', 22.866146001452549)
+loss: 1636.33
+-------------------------------------------------------
+20 input neurons , 20 hidden , 1 final. Tanh, tanh, relu
+Poor convergence .. Adam optimizer
+
+    input_features = ['Address','Bathroom','Bedroom2','BuildingArea','Car','CouncilArea', 'Date', 'Distance', 'Landsize', 'Lattitude', 'Longtitude', 'Method', 'Postcode', 'Price', 'Propertycount', 'Regionname', 'Rooms', 'SellerG', 'Suburb', 'Type', 'YearBuilt']
+
+==================================================
+SNN
+
+
+
+
+Next Step:
+1) make it working on train and test. and prepare for kaggle submission
+2) reproduce results
+3) How to make infer on test be automatically dumped into directory of training output?
+4) Data is not complete. Drop data from 'Alley' collumn . Write an article chapter
+5) Make some filling of data
+
+
+
+==============================================
+Data cleaning:
+
+Car - number of car parking places. sometimes NAN. thesis is that if no paring spots then not always info is put. Also
+value of zero among proper values is less common that non-zero values. so we replace NAN with 0.
+
+
+Bathroom - number of Bathrooms. If NAN then I assume 1. If someone got more than it is more likely to underline that fact.
+
+CoucilArea -- Tried to guess from adress, but was to bug prone sso decided to put unknown
+
+Bedroom2 -- number of beedrooms. IT seems to be subset of Rooms. So I will remove that columns
+
+Latitude/longtitude -- IT would be beneficial to have that one. But will be droped do to 20% of missing data. We could consider guessing based on address eg. find property on same street and same suburb etc. It would be difficult
+
+Regionname -- will try to recreate one.. based on address, suburb. First I check from same suburb and returns REgionname if possible.
+If not avaialbe properties from same suburb then I return first property from same street 
+
+Price -- missing, then dropped data rows that got NAN in that column. Drop after other cleaning ops were made
+
+Distance to CBD was taken as an averge distance to CBD in given suburb. Or 
+
+Year recreation - type of building if possile in the same suburb what age and average age. I wil try with 0 value howpfully NN will
+ignore that info for NAN cases
+
+Building area -- Make up info based on existing LandSize. If either one or another does exists then we could get average of BuildingArea given house type and LandSize within suburb
+
+Make buildingarea 
+Failed at 29483 index
+NAN at 17th
+Try in calculation avoid zeros. zero/zero is NAN
+Get interpolated value based on surrounding values of missing one (eg. Landsize )
+
+
+Make Landsize
+Same idea as in building area
+
+Ok, data cleaned , time for experiments
+
+Add embedding solution
+
+Make experiments
+and type results
+
+python3 porting
+
+=== Ok tranfering my program to new data set
+
+test data set does not have saleprice collumn. So we work on traning and
+then make our submission
+
+Data cleaning:
+- making plot showing influence given feture to Saleprice is used concept
+
+Alley -- 90% NAN, NAN means that no alley access 
+LotFrontage -- Chart created not much influence on its own. So I can safely put zero.
+FirePlaceQu -- NA - 0 , Poor - 1 , 
+
+GarageType -- N/A - no garage sop I put 0 here, other types are integers, where 2Types (two types of garage) are maximum values 
+
+GarageYearBuild -- N/A , there was 64 N/A so it is liklely those are the same values when garage is missing. I think I will ignore that value
+
+GarageCond and other garage values. seems like all having gaps when no garae is present
+Not usre hat diffrence on GarageQuality / GarageCond is.
+
+PoolQC -- qulity of pool. I can see that NA is not present, but in PoolArea we have zero at that locations
+
+
+Fence -- N/A no fence. So N/a - 0 , other values integers 
+
+MiscFeature -- temporary some integers put, NA for lack of misc feature
+BsMt{Qual,Cond,Exposure,FinType1,FinType2} 37,37,38,37,38 
+Electrical -- 
+correlations: bsmtqual - no correlation 
+	lets make random choice based on histogram of samples
+made a correlations among yearbuilt of building and electril type. And it seem all above is SBRKR
+
+using 0 into something, is this restriction? as 0 times something is 0..
+
+one hot representation -- how to make it done
+
+Ignoring SaleType, YrSold, MoSold. Should I ignore SaleCondition?
+
+MasVnrType and MasVnrArea
+
+MSZoning was filled based on majority in this neighbourhood
+
+Make some experimetns
+
+Val 0 , train 100 -- to find a model when it does to capable enough. And then increase validation
+
+SNN infer does not work. Why? 
+normalizatin was added still some results were poor
+
+
+SFN - Swish function testing
+
+SWISH 27,27,1 0.0209 vs Relu 27,27,1 0.0214
+
+Exactly same model 27,27,1 and we progress towards relu by 30 location (3090 -> 3060)
+
+- normalization with swish
+
+- regularization 27-27-1 
+L2(0.01)  0.1454
+L2(0.001) 0.04951
+
+try lasso regularization L1:
+/l1(0.001) 0.045
+/l1(0.0001) 0.042
+
+Swish with normalization (300 epochs):
+train MAE: 0.008501101108399332
+train loss: 0.0035 - val_loss: 0.0278  ==> can regularization help with that?
+something wrong with scaler unpickling
+
+Normalize + regularization + swish
+val MAE: 0.018513195395127854   , test acc: 0.14531 
+
+- 1000 epochs is overfitting definetly
+
+
+- Next make correlation graph
+-analyze
+https://www.kaggle.com/nityeshaga/modelling-the-real-estate-scene-of-ames
+- Regularization + normalization?
