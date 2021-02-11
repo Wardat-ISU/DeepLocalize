@@ -45,7 +45,7 @@ You can start training a new model using any environment for scientific programm
     python main.py
 
 
-## Our Callbacks API
+## Our Callback Function
 To use our callback, you need to add our callback as subclass in your keras.callbacks.py file.
 
 The core principle of our callback to get a view on internal states and statistics of the model during training.
