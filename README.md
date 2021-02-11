@@ -45,7 +45,7 @@ You can start training a new model using the following commands in Terminal (mac
     python main.py
 
 
-## Our Callback Function
+## Our Callback Method
 To use our callback, you need to add our callback as subclass in your keras.callbacks.py file.
 
 The core principle of our callback to get a view on internal states and statistics of the model during training.
