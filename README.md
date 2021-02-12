@@ -69,12 +69,14 @@ model.fit(np.arange(100).reshape(5, 20), np.zeros(5), epochs=10, batch_size=1,
 Version numbers below are of confirmed working releases for this project.
 
     python 3.6.5
-    keras 2.2.2   
-    numpy 1.14.3
-    pandas 0.23.4
-    scikit-learn 0.19.1
-    scipy 1.1.0
-    tensorflow 1.10.1
+    Keras  2.2.0
+    Keras-Applications  1.0.2
+    Keras-Preprocessing 1.0.1  
+    numpy 1.19.2
+    pandas 1.1.5
+    scikit-learn 0.21.2
+    scipy 1.6.0
+    tensorflow 1.14.0
 
 ## BibTeX Reference
 If you find this [paper](https://conf.researchr.org/details/icse-2021/icse-2021-papers/1/DeepLocalize-Fault-Localization-for-Deep-Neural-Networks) useful in your research, please consider citing:
