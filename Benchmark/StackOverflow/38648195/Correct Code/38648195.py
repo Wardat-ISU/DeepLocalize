@@ -20,9 +20,9 @@ model.add(Dense(20))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
 model.add(Dense(3))
-model.add(Activation('softmax'))
+model.add(Activation('sigmoid'))
 
-model.compile(loss='mean_squared_error',
+model.compile(loss='binary_crossentropy',
           optimizer='sgd',
           metrics=['accuracy'])
 
